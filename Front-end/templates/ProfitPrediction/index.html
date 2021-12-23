@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProfitPrediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="../../static/ProfitPrediction/css/styles.css" >
+    <link rel="stylesheet" href="../../static/ProfitPrediction/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'ProfitPrediction/css/styles.css'  %}">
+</head>
+<style>
+    #bg{
+        padding: 50px 0px 50px 0px;
+    }
+    #pred{
+        background-color: lightgray;
+        border-radius: 8px;
+        box-shadow: 0px 10px 30px rgba(0,0,0,.3);
+        width: 40%;
+        padding: 50px 50px 50px 0px;
+        margin: 0 auto;
+        margin-top: 8%;
+     }
+    #form{
+        text-align: center;
+    }
+    input{
+        border-radius: 6px;
+        border: none;
+        width: 120px;
+    }
+    table{
+        margin-left: 14%;
+    }
+    #states{
+        width: 100%;
+        border-radius: 8px;
+        border: none;
+    }
+</style>
+<body>
+
+<div id="bg" >
+    <div class="container" style="">
+        <div id="pred" class="inscription-text animated bounceInLef">
+
+                <table cellpadding="10px" >
+                    <form id="form" action="getForm" method="post">  {% csrf_token %}
+
+                        <th colspan="2">
+                            <h5 style="text-align: center;">Profit Prediction</h5>
+                        </th>
+                        <tr>
+                            <td>
+                                <input type="text" name="RnDSpend" placeholder="R&D Spend"  style="width: 100%" required>
+                            </td>
+                            <td>
+                                <input type="text" name="Administration" placeholder="Administration"  style="width: 100%" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <input type="text" name="MarketingSpend" placeholder="Marketing Spend"  style="width: 100%" required>
+                            </td>
+                            <td>
+                                 <select name="state" id="states" required>
+                                     <option value="" disabled selected hidden>State</option>
+                                     <option value="New York">New York</option>
+                                     <option value="California">California</option>
+                                     <option value="Florida">Florida</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Predict"   class="btn btn-sm btn-dark" style="width: 100%;border-radius: 8px">
+                            </td>
+                        </tr>
+
+                </form>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
